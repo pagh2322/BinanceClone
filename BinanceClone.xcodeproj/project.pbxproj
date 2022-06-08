@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B74CFACF284F783D0057C941 /* BinanceCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CFACE284F783D0057C941 /* BinanceCloneApp.swift */; };
-		B74CFAD1284F783D0057C941 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CFAD0284F783D0057C941 /* ContentView.swift */; };
+		B74CFAD1284F783D0057C941 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CFAD0284F783D0057C941 /* MainView.swift */; };
 		B74CFAD3284F783F0057C941 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74CFAD2284F783F0057C941 /* Assets.xcassets */; };
 		B74CFAD6284F783F0057C941 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74CFAD5284F783F0057C941 /* Preview Assets.xcassets */; };
+		B74CFAE0284F7E750057C941 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CFADF284F7E750057C941 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B74CFACB284F783D0057C941 /* BinanceClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinanceClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74CFACE284F783D0057C941 /* BinanceCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceCloneApp.swift; sourceTree = "<group>"; };
-		B74CFAD0284F783D0057C941 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B74CFAD0284F783D0057C941 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B74CFAD2284F783F0057C941 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B74CFAD5284F783F0057C941 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B74CFADF284F7E750057C941 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,9 @@
 		B74CFACD284F783D0057C941 /* BinanceClone */ = {
 			isa = PBXGroup;
 			children = (
+				B74CFADD284F7E600057C941 /* Helpers */,
 				B74CFACE284F783D0057C941 /* BinanceCloneApp.swift */,
-				B74CFAD0284F783D0057C941 /* ContentView.swift */,
+				B74CFADC284F79390057C941 /* Views */,
 				B74CFAD2284F783F0057C941 /* Assets.xcassets */,
 				B74CFAD4284F783F0057C941 /* Preview Content */,
 			);
@@ -65,6 +68,30 @@
 				B74CFAD5284F783F0057C941 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B74CFADC284F79390057C941 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B74CFAD0284F783D0057C941 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B74CFADD284F7E600057C941 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B74CFADE284F7E670057C941 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B74CFADE284F7E670057C941 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B74CFADF284F7E750057C941 /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B74CFAD1284F783D0057C941 /* ContentView.swift in Sources */,
+				B74CFAD1284F783D0057C941 /* MainView.swift in Sources */,
 				B74CFACF284F783D0057C941 /* BinanceCloneApp.swift in Sources */,
+				B74CFAE0284F7E750057C941 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
