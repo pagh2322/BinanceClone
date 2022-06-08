@@ -23,13 +23,6 @@ struct MainView: View {
         "WING"
     ]
     
-    let category = [
-        "Hot",
-        "Market Cap",
-        "Price",
-        "24h Change"
-    ]
-    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -55,29 +48,17 @@ struct MainView: View {
                             // sign up
                         }) {
                             Text("Sign Up")
-                                .foregroundColor(.white)
                                 .bold()
-                                .padding()
-                                .frame(width: UIScreen.main.bounds.width / 2 - 20 - 10, height: 44)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .fill(Color.signUpButtonColor)
-                                )
                         }
+                        .buttonStyle(CustomButtonStyle(labelColor: .white, backgroundColor: .signUpButtonColor))
                         
                         Button(action: {
                             // login
                         }) {
                             Text("Log In")
-                                .foregroundColor(.black)
                                 .bold()
-                                .padding()
-                                .frame(width: UIScreen.main.bounds.width / 2 - 20 - 10, height: 44)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .fill(Color.loginButtonColor)
-                                )
                         }
+                        .buttonStyle(CustomButtonStyle(labelColor: .black, backgroundColor: .loginButtonColor))
                     }
                     .padding(.top, 20)
                     
@@ -89,9 +70,8 @@ struct MainView: View {
                     
                     Section(header: headerView()) {
                         ForEach(coinNames, id: \.self) { name in
-                            Text(name)
-                                .font(.title)
-                                .padding(.vertical)
+                            ItemListRow(name: name)
+                                .padding(.vertical, 15)
                         }
                         
                     }
@@ -117,44 +97,72 @@ struct MainView: View {
         }
     }
     
-    private func headerView() -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .top, spacing: 0) {
-                Text("Watchlist")
-                    .bold()
-                    .foregroundColor(.disableColor)
-                
+    let firstHeaderLabels = [
+        "Watchlist",
+        "Coin",
+        "NFT"
+    ]
+    @State var selectedFirstHeaderLabelIndex = 0
+    
+    var firstHeaderView: some View {
+        HStack(alignment: .top, spacing: 0) {
+            ForEach(0..<firstHeaderLabels.count, id: \.self) { index in
                 VStack {
-                    Text("Coin")
+                    Text(firstHeaderLabels[index])
                         .bold()
-                        .foregroundColor(.white)
+                        .foregroundColor(selectedFirstHeaderLabelIndex == index ? .white : .disableColor)
                     
-                    Rectangle()
-                        .fill(Color.loginButtonColor)
-                        .frame(width: 25, height: 4)
-                }
-                .padding(.leading, 25)
-                
-                Text("NFT")
-                    .bold()
-                    .foregroundColor(.disableColor)
-                    .padding(.leading, 25)
-                Spacer()
-            }
-            .padding(.leading, 20)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0..<category.count, id: \.self) { index in
-                        Text(category[index])
-                            .bold()
-                            .font(.callout)
-                            .padding(.leading, index == 0 ? 20 : 30)
-                            .foregroundColor(index == 0 ? .white : .disableColor)
+                    if selectedFirstHeaderLabelIndex == index {
+                        Rectangle()
+                            .fill(Color.loginButtonColor)
+                            .frame(width: 25, height: 4)
                     }
                 }
+                .onTapGesture {
+                    selectedFirstHeaderLabelIndex = index
+                }
+                .padding(.leading, index == 0 ? 20 : 25)
             }
-            .padding(.top, 15)
+            Spacer()
+        }
+    }
+    
+    let secondHeaderLabels = [
+        "Hot",
+        "Market Cap",
+        "Price",
+        "24h Change"
+    ]
+    @State var selectedSecondHeaderLabelIndex = 0
+    
+    var secondHeaderView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(0..<secondHeaderLabels.count, id: \.self) { index in
+                    Text(secondHeaderLabels[index])
+                        .bold()
+                        .font(.callout)
+                        .onTapGesture {
+                            selectedSecondHeaderLabelIndex = index
+                        }
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule()
+                                .fill(selectedSecondHeaderLabelIndex == index ? Color.customSecondary : Color.bgColor)
+                        )
+                        .padding(.leading, index == 0 ? 13 : 23)
+                        .foregroundColor(selectedSecondHeaderLabelIndex == index ? .white : .disableColor)
+                }
+            }
+        }
+    }
+    
+    private func headerView() -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            firstHeaderView
+            
+            secondHeaderView.padding(.top, 15)
         }
         .padding(.vertical, 15)
         .background(Color.bgColor)

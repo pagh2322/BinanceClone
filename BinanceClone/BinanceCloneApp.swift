@@ -11,16 +11,12 @@ import SwiftUI
 struct BinanceCloneApp: App {
     
     init() {
-        
-//        UINavigationBar.appearance().barTintColor = UIColor(.bgColor)
-        
         let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.configureWithDefaultBackground()
         navigationBarAppearance.backgroundColor = UIColor(.bgColor)
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        
-//        UINavigationBar.appearance().barTintColor = UIColor(.bgColor)
+        navigationBarAppearance.shadowColor = .clear
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
     
     var body: some Scene {
